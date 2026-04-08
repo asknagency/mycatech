@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>My Tech Blog</title>
+  <link>https://asknagency.github.io/mycatech</link>
+  <description>Recent posts from My Tech Blog</description>
+  <item>
+    <title>The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity</title>
+    <link>https://asknagency.github.io/mycatech/posts/the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity.html</link>
+    <description>In recent months, the focus of artificial intelligence has shifted dramatically from passive chat systems to active, autonomous agents. These systems,...</description>
+    <pubDate>Tue, 07 Apr 2026 09:24:25 GMT</pubDate>
+  </item>
+</channel>
+</rss>
