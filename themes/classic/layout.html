@@ -2,11 +2,140 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{title}}</title>
-    <link rel="stylesheet" href="/style.css">
+    
     {{head_inject}}
+    
+    <style>
+        /* Base Variables & Theming */
+        :root {
+            --bg: var(--theme-surface, #ffffff);
+            --text: var(--theme-text, #1f2937);
+            --brand: var(--theme-primary, #14b8a6);
+            --brand-light: color-mix(in srgb, var(--brand) 12%, transparent);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { 
+            max-width: 768px; 
+            margin: 0 auto; 
+            padding: 2rem 1.5rem; 
+        }
+
+        header { 
+            margin-bottom: 3rem; 
+            border-bottom: 1px solid color-mix(in srgb, var(--text) 10%, transparent); 
+            padding-bottom: 1.5rem; 
+        }
+
+        header a { 
+            text-decoration: none; 
+            color: var(--brand); 
+            font-weight: 600; 
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        header a:hover { opacity: 0.8; }
+
+        /* Typography & Markdown Styling */
+        .prose h1 { font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.025em; }
+        .prose h2 { font-size: 1.75rem; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 600; }
+        .prose h3 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.75rem; font-weight: 600; }
+        .prose p { margin-bottom: 1.5rem; font-size: 1.125rem; }
+        .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 4px; }
+        .prose img { max-width: 100%; height: auto; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        
+        .prose pre { 
+            background: #111827; 
+            color: #e5e7eb; 
+            padding: 1.25rem; 
+            border-radius: 0.5rem; 
+            overflow-x: auto; 
+            font-family: 'Fira Code', monospace; 
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .prose code { 
+            background: var(--brand-light); 
+            color: var(--brand); 
+            padding: 0.2rem 0.4rem; 
+            border-radius: 0.25rem; 
+            font-family: 'Fira Code', monospace; 
+            font-size: 0.85em; 
+        }
+        
+        .prose pre code { background: transparent; color: inherit; padding: 0; }
+        
+        .prose blockquote { 
+            border-left: 4px solid var(--brand); 
+            margin: 0 0 1.5rem 0; 
+            padding-left: 1.25rem; 
+            font-style: italic; 
+            color: color-mix(in srgb, var(--text) 80%, transparent);
+        }
+
+        /* CMS Generated Media Blocks */
+        .npm-media-block { margin: 2.5rem 0; width: 100%; }
+        .npm-media-block[data-display="grid"] { display: grid; gap: 0.75rem; }
+        .npm-media-block[data-display="grid"][data-cols="2"] { grid-template-columns: repeat(2, 1fr); }
+        .npm-media-block[data-display="grid"][data-cols="3"] { grid-template-columns: repeat(3, 1fr); }
+        .npm-media-block[data-display="grid"][data-cols="4"] { grid-template-columns: repeat(2, 1fr); } /* Fallback to 2x2 for mobile */
+        
+        @media (min-width: 640px) {
+            .npm-media-block[data-display="grid"][data-cols="4"] { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        .npm-media-block[data-display="carousel"] { 
+            display: flex; 
+            overflow-x: auto; 
+            gap: 1rem; 
+            scroll-snap-type: x mandatory; 
+            padding-bottom: 1rem;
+            scrollbar-width: none; /* Firefox */
+        }
+        .npm-media-block[data-display="carousel"]::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+        
+        .npm-media-item { position: relative; scroll-snap-align: center; flex: 0 0 85%; }
+        @media (min-width: 640px) { .npm-media-item { flex: 0 0 60%; } }
+        
+        .npm-media-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; margin: 0 !important; }
+        figcaption { text-align: center; font-size: 0.875rem; color: color-mix(in srgb, var(--text) 60%, transparent); margin-top: 0.5rem; font-style: italic; }
+
+        /* Embeds */
+        iframe { border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        audio { width: 100%; margin-bottom: 1.5rem; }
+    </style>
 </head>
 <body>
-    <main>{{content}}</main>
+    <div class="container">
+        <header>
+            <a href="../">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Blog
+            </a>
+        </header>
+
+        <main class="prose">
+            {{content}}
+        </main>
+
+        <footer style="margin-top: 5rem; text-align: center; font-size: 0.875rem; color: color-mix(in srgb, var(--text) 50%, transparent);">
+            &copy; <script>document.write(new Date().getFullYear())</script> &bull; Built with CMS Hub Pro
+        </footer>
+    </div>
 </body>
 </html>
