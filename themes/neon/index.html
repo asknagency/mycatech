@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Feed</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    {{cms_data}}
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: 'var(--theme-primary, #14b8a6)',
+                            surface: 'var(--theme-surface, #ffffff)',
+                            text: 'var(--theme-text, #111827)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: var(--theme-surface);
+            color: var(--theme-text);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        .card-fx {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-fx:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-primary selection:text-white min-h-screen flex flex-col">
+    
+    <header class="py-20 px-6 border-b border-brand-text/10 header-anim opacity-0">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-6xl md:text-8xl font-black tracking-tighter mb-4">Latest <span class="text-brand-primary">Writing</span></h1>
+            <p class="text-xl md:text-2xl opacity-70 font-medium">Thoughts, updates, and deep dives.</p>
+        </div>
+    </header>
+
+    <main class="flex-1 max-w-6xl mx-auto px-6 py-16 w-full">
+        <div id="featured-container" class="mb-20"></div>
+        
+        <div class="flex items-center justify-between mb-10 border-b border-brand-text/10 pb-4 header-anim opacity-0">
+            <h2 class="text-2xl font-bold tracking-tight">Recent Posts</h2>
+        </div>
+
+        <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dataScript = document.getElementById('cms-blog-data');
+            let blogData = { featured: [], recent: [] };
+            
+            if (dataScript) {
+                try { blogData = JSON.parse(dataScript.textContent); } 
+                catch(e) { console.error("Failed to parse CMS data", e); }
+            }
+
+            const formatDate = (dateStr) => {
+                return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            };
+
+            const featuredContainer = document.getElementById('featured-container');
+            const postsGrid = document.getElementById('posts-grid');
+
+            // 1. Build Featured Post
+            if (blogData.featured && blogData.featured.length > 0) {
+                const post = blogData.featured[0];
+                featuredContainer.innerHTML = `
+                    <a href="${post.slug}.html" class="group flex flex-col md:flex-row rounded-3xl overflow-hidden card-fx featured-anim opacity-0 translate-y-12 bg-brand-text/5 ring-1 ring-brand-text/10">
+                        <div class="md:w-3/5 relative overflow-hidden min-h-[300px] md:min-h-[450px]">
+                            ${post.featuredImage 
+                                ? `<img src="${post.featuredImage}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="${post.title}">` 
+                                : `<div class="absolute inset-0 w-full h-full bg-brand-primary/10 flex items-center justify-center"><i class="ph ph-image text-4xl opacity-20"></i></div>`
+                            }
+                        </div>
+                        <div class="md:w-2/5 p-8 md:p-12 flex flex-col justify-center">
+                            <div class="text-[10px] font-bold tracking-widest uppercase mb-4 inline-flex px-3 py-1.5 rounded-full bg-brand-primary text-white w-fit">Featured</div>
+                            <h2 class="text-3xl md:text-5xl font-bold tracking-tight mb-4 group-hover:text-brand-primary transition-colors">${post.title}</h2>
+                            <p class="opacity-70 text-lg mb-8 line-clamp-3 leading-relaxed">${post.seoDescription || ''}</p>
+                            <div class="text-sm font-medium opacity-50 mt-auto flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                ${formatDate(post.date)}
+                            </div>
+                        </div>
+                    </a>
+                `;
+            }
+
+            // 2. Build Recent Posts Grid
+            if (blogData.recent && blogData.recent.length > 0) {
+                blogData.recent.forEach((post) => {
+                    // Skip if it's the featured post we just rendered
+                    if (blogData.featured.length > 0 && post.id === blogData.featured[0].id) return;
+                    
+                    const el = document.createElement('a');
+                    el.href = `${post.slug}.html`;
+                    el.className = "group flex flex-col rounded-2xl overflow-hidden card-fx post-anim opacity-0 translate-y-8 bg-brand-text/5 ring-1 ring-brand-text/10";
+                    
+                    el.innerHTML = `
+                        <div class="aspect-[16/10] overflow-hidden relative">
+                            ${post.featuredImage 
+                                ? `<img src="${post.featuredImage}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="${post.title}">` 
+                                : `<div class="w-full h-full bg-brand-primary/5"></div>`
+                            }
+                        </div>
+                        <div class="p-6 md:p-8 flex-1 flex flex-col">
+                            <h3 class="text-xl md:text-2xl font-bold tracking-tight mb-3 group-hover:text-brand-primary transition-colors line-clamp-2">${post.title}</h3>
+                            <p class="opacity-70 text-sm mb-6 line-clamp-2 flex-1 leading-relaxed">${post.seoDescription || ''}</p>
+                            <div class="text-xs font-medium opacity-50 flex items-center gap-1.5">
+                                ${formatDate(post.date)}
+                            </div>
+                        </div>
+                    `;
+                    postsGrid.appendChild(el);
+                });
+            } else {
+                postsGrid.innerHTML = '<p class="opacity-50 col-span-full py-12 text-center text-lg font-medium">No posts published yet.</p>';
+            }
+
+            // 3. Fire GSAP Animations
+            const tl = gsap.timeline();
+            tl.to(".header-anim", { opacity: 1, duration: 1, ease: "power2.out" })
+              .to(".featured-anim", { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.6")
+              .to(".post-anim", { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power2.out" }, "-=0.6");
+        });
+    </script>
+</body>
+</html>
