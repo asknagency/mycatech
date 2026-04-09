@@ -1,108 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{{title}}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: { extend: {
-                colors: { brand: { 50: '#f0fdfa', 100: '#ccfbf1', 500: '#14b8a6', 600: '#0d9488', 900: '#134e4a' }, dark: { bg: '#121212', surface: '#1e1e1e', border: '#2d2d2d' } },
-                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'], mono: ['Fira Code', 'monospace'] }
-            }}
-        }
-    </script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap');
-        body { font-family: 'Inter', system-ui, sans-serif; overflow-y: scroll; }
-        
-        /* Pro Editor Typography Parity */
-        .prose { max-width: 100%; }
-        .prose h1{font-size:1.75rem;font-weight:800;margin-bottom:1rem;line-height:1.2;letter-spacing:-0.025em;}
-        .prose h2{font-size:1.5rem;font-weight:700;margin-top:2rem;margin-bottom:1rem;letter-spacing:-0.025em;}
-        .prose h3{font-size:1.25rem;font-weight:600;margin-top:1.5rem;margin-bottom:0.75rem;} 
-        .prose p{margin-bottom:1.25rem;line-height:1.7;color:#374151;font-size:1.05rem;}
-        html.dark .prose p{color:#d1d5db;}
-        .prose a{color:#14b8a6;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s;} 
-        .prose a:hover{border-color:#14b8a6;}
-        .prose ul{list-style-type:disc;padding-left:1.5rem;margin-bottom:1.25rem;color:#374151;font-size:1.05rem;}
-        html.dark .prose ul{color:#d1d5db;}
-        .prose ol{list-style-type:decimal;padding-left:1.5rem;margin-bottom:1.25rem;color:#374151;font-size:1.05rem;}
-        html.dark .prose ol{color:#d1d5db;}
-        .prose blockquote{border-left:4px solid #14b8a6;padding-left:1rem;font-style:italic;color:#4b5563;margin-bottom:1.25rem;font-size:1.1rem;background:rgba(20,184,166,0.05);padding:1rem;border-radius:0 0.5rem 0.5rem 0;}
-        html.dark .prose blockquote{color:#9ca3af;background:rgba(20,184,166,0.1);}
-        .prose code{background-color:#f3f4f6;padding:.2rem .4rem;border-radius:.375rem;font-family:'Fira Code',monospace;font-size:.85em;color:#ef4444;}
-        html.dark .prose code{background-color:#1f2937;color:#fca5a5;} 
-        .prose pre{background-color:#111827;padding:1.25rem;border-radius:.75rem;overflow-x:auto;margin-bottom:1.5rem;border:1px solid #374151;}
-        .prose pre code{background-color:transparent;color:#e5e7eb;padding:0;font-size:.875rem;} 
-        .prose hr{border-top:1px solid #e5e7eb;margin:2.5rem 0;}
-        html.dark .prose hr{border-top-color:#374151;}
-
-        /* Pro Editor Media Parity */
-        .npm-media-block{margin:2rem auto;width:100%;display:flex;flex-direction:column;gap:.75rem;} 
-        .npm-media-block[data-align="left"]{margin-right:auto;max-width:85%;}
-        .npm-media-block[data-align="center"]{margin-left:auto;margin-right:auto;} 
-        .npm-media-block[data-align="right"]{margin-left:auto;max-width:85%;}
-        .npm-media-block[data-display="grid"]{display:grid;gap:.75rem;} 
-        .npm-media-block[data-display="grid"][data-cols="1"]{grid-template-columns:1fr;}
-        .npm-media-block[data-display="grid"][data-cols="2"],.npm-media-block[data-display="grid"][data-cols="4"]{grid-template-columns:repeat(2,1fr);}
-        .npm-media-block[data-display="grid"][data-cols="3"]{grid-template-columns:repeat(3,1fr);} 
-        .npm-media-block[data-display="grid"][data-cols="3"] .npm-media-item:first-child{grid-column:span 3;}
-        .npm-media-block[data-display="carousel"]{display:flex;flex-direction:row;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;}
-        .npm-media-block[data-display="carousel"]::-webkit-scrollbar{display:none;} 
-        .npm-media-block[data-display="carousel"] .npm-media-item{flex:0 0 85%;scroll-snap-align:center;margin-right:.75rem;}
-        .npm-media-item{display:flex;flex-direction:column;gap:.5rem;position:relative;}
-        .npm-media-block img,.npm-media-block iframe,.npm-media-block audio{width:100%;object-fit:cover;margin:0 !important;border-radius:.75rem;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);}
-        .npm-media-block figcaption{font-size:.8rem;color:#6b7280;text-align:center;font-style:italic;margin-top:.5rem;}
-        html.dark .npm-media-block figcaption{color:#9ca3af;}
-    </style>
+    <link rel="stylesheet" href="/style.css">
+    {{head_inject}}
 </head>
-<body class="bg-white dark:bg-[#0a0a0a] text-gray-900 dark:text-gray-100 transition-colors duration-300 min-h-screen flex flex-col antialiased">
-
-    <header class="sticky top-0 z-50 bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md border-b border-gray-100 dark:border-dark-border transition-colors">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-            <a href="../index.html" class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400 hover:text-brand-500 transition-colors text-sm font-medium">
-                <i class="ph ph-arrow-left text-lg"></i> Back to Blog
-            </a>
-            <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-1.5 text-gray-500 dark:text-gray-400 hover:text-brand-500 rounded-full transition-colors">
-                <i class="ph ph-sun text-lg dark:hidden"></i>
-                <i class="ph-fill ph-moon text-lg hidden dark:block"></i>
-            </button>
-        </div>
-    </header>
-
-    <main class="flex-1 w-full">
-        <article class="max-w-3xl mx-auto px-4 sm:px-6 py-10 md:py-16">
-            <div class="prose dark:prose-invert">
-                {{content}}
-            </div>
-        </article>
-    </main>
-
-    <footer class="mt-auto border-t border-gray-100 dark:border-dark-border bg-gray-50 dark:bg-[#121212] transition-colors">
-        <div class="max-w-3xl mx-auto px-4 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500 dark:text-gray-400">
-            <div>&copy; <span id="year"></span>. All rights reserved.</div>
-            <div class="flex items-center gap-1">Powered by <span class="font-bold text-brand-500"><i class="ph-fill ph-database inline align-text-bottom"></i> CMS Hub Pro</span></div>
-        </div>
-    </footer>
-
-    <script>
-        // Theme Toggle Logic
-        const html = document.documentElement;
-        const toggleBtn = document.getElementById('theme-toggle');
-        const initTheme = () => {
-            const isDark = localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            html.classList.toggle('dark', isDark);
-        };
-        initTheme();
-        toggleBtn.addEventListener('click', () => {
-            html.classList.toggle('dark');
-            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-        });
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+<body>
+    <main>{{content}}</main>
 </body>
 </html>
