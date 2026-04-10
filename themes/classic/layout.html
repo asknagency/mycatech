@@ -1,93 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     {{head_inject}}
-    <style>
-        /* SOHO Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--theme-surface);
-            color: var(--theme-text);
-            line-height: 1.6;
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: 'var(--theme-primary, #201c87)', // Uses CMS theme variable
+                            light: 'var(--theme-surface, #f5f5f5)'
+                        }
+                    }
+                }
+            }
         }
+    </script>
 
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: var(--theme-surface); border-bottom: 1px solid #1a1a1a; }
-        .logo { font-weight: 800; font-size: 24px; letter-spacing: 2px; text-decoration: none; color: var(--theme-text); }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 30px; }
-        nav ul li a { text-decoration: none; color: #888; font-size: 14px; transition: 0.3s; }
-        nav ul li a:hover { color: var(--theme-text); border-bottom: 2px solid var(--theme-primary); padding-bottom: 5px; }
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .img-container { overflow: hidden; }
+        .img-container img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .group:hover .img-container img { transform: scale(1.05); }
 
-        /* Post Content Styling */
-        .post-container { max-width: 800px; margin: 60px auto; padding: 0 20px; }
-        .post-content h1, .post-content h2, .post-content h3 { margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; }
-        .post-content p { margin-bottom: 1.5rem; color: #ccc; font-size: 16px; }
-        .post-content a { color: var(--theme-primary); text-decoration: none; }
-        .post-content a:hover { text-decoration: underline; }
-        .post-content blockquote { border-left: 3px solid var(--theme-primary); padding-left: 1rem; font-style: italic; color: #888; margin-bottom: 1.5rem; }
-        
-        /* CMS Media Blocks */
-        .npm-media-block { margin: 2rem 0; width: 100%; display: flex; flex-direction: column; gap: 0.5rem; }
-        .npm-media-block[data-display="grid"] { display: grid; gap: 10px; }
-        .npm-media-block[data-display="grid"][data-cols="2"] { grid-template-columns: repeat(2, 1fr); }
-        .npm-media-block img { width: 100%; height: auto; border-radius: 4px; }
-
-        /* Footer */
-        footer { background: #0a0a0a; padding: 80px 10% 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-top: 1px solid #1a1a1a; margin-top: 80px; }
-        .footer-col h4 { margin-bottom: 20px; font-size: 16px; color: var(--theme-text); }
-        .footer-col p, .footer-col a { color: #666; font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; }
-        .footer-logo { font-size: 32px; font-weight: 800; color: #333; margin-bottom: 20px; }
-        .copyright { grid-column: 1 / -1; margin-top: 40px; color: #444; font-size: 12px; }
-
-        @media (max-width: 900px) { footer { grid-template-columns: repeat(2, 1fr); } header { flex-direction: column; gap: 20px; } nav ul li { margin: 0 15px; } }
+        /* Basic Markdown Prose Styling for injected content */
+        .prose { max-w-none; }
+        .prose h1, .prose h2, .prose h3 { font-family: 'Playfair Display', serif; color: #111827; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #374151; }
+        .prose a { color: var(--theme-primary, #201c87); text-decoration: underline; }
+        .prose img { border-radius: 0.75rem; margin-top: 2rem; margin-bottom: 2rem; }
+        .prose figure { margin-top: 2rem; margin-bottom: 2rem; }
+        .prose figcaption { text-align: center; color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem; }
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-900 antialiased selection:bg-brand-blue selection:text-white">
 
-    <header>
-        <a href="../index.html" class="logo">SOHO</a>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="#">Works</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </nav>
+    <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900">Whereby</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Support</a>
+                <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors">Try for free</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="post-container">
-        <article class="post-content">
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <article class="gsap-content prose prose-lg">
+            <h1 class="text-4xl md:text-5xl font-serif font-bold leading-tight mb-8">{{title}}</h1>
+            
             {{content}}
         </article>
     </main>
 
-    <footer>
-        <div class="footer-col"><div class="footer-logo">SOHO</div></div>
-        <div class="footer-col">
-            <h4>Find Us Here</h4>
-            <p>SOHO Co.</p>
-            <p>155 Sixth Avenue, 12th Floor</p>
-            <p>New York, NY, USA</p>
+    <footer class="gsap-footer border-t border-gray-200 mt-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-sm">
+                <div>
+                    <h4 class="font-serif font-semibold text-gray-900 mb-6 text-lg">About</h4>
+                    <ul class="space-y-4 text-gray-600">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">About us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Our vision</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="footer-col">
-            <h4>Want to Say Hi?</h4>
-            <p>Phone: 800 1234 56 78</p>
-            <p>Email: <a href="mailto:info@yoursite.com" style="display:inline; color:var(--theme-primary);">info@yoursite.com</a></p>
-        </div>
-        <div class="footer-col">
-            <h4>Also Visit Us On</h4>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>
-        <div class="copyright">© 2026 SOHO Pro Blog</div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
+            gsap.fromTo(".gsap-content", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: "power3.out" });
+        });
+    </script>
 </body>
 </html>

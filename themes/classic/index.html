@@ -1,141 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOHO - Blog Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Blog | Whereby</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    
     {{cms_data}}
-    <style>
-        /* Base Styles */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--theme-surface, #000); color: var(--theme-text, #fff); line-height: 1.6; }
-
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: var(--theme-surface); }
-        .logo { font-weight: 800; font-size: 24px; letter-spacing: 2px; }
-        nav ul { display: flex; list-style: none; }
-        nav ul li { margin-left: 30px; }
-        nav ul li a { text-decoration: none; color: #888; font-size: 14px; transition: 0.3s; }
-        nav ul li a:hover, nav ul li a.active { color: var(--theme-text); border-bottom: 2px solid var(--theme-primary, #ff5e62); padding-bottom: 5px; }
-
-        /* Dynamic CMS Gallery Grid */
-        .gallery { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
-        .gallery-item { position: relative; display: block; overflow: hidden; aspect-ratio: 1/1; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.05); }
-        .gallery-item .overlay {
-            position: absolute; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s; text-align: center; padding: 20px;
-        }
-        .gallery-item:hover .overlay { opacity: 1; }
-        .gallery-item .overlay span { color: #fff; font-weight: bold; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* About Section */
-        .about-section { padding: 80px 10%; display: flex; flex-wrap: wrap; gap: 40px; }
-        .about-header { width: 100%; margin-bottom: 40px; }
-        .about-header h2 { font-size: 28px; display: flex; align-items: center; gap: 20px; }
-        .about-header h2::after { content: ""; height: 1px; width: 80px; background: #444; display: inline-block; }
-        .about-content-main { flex: 1; min-width: 300px; }
-        .about-content-main h1 { font-size: 42px; line-height: 1.2; font-weight: 400; color: #ccc; }
-        .about-details { flex: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; color: #888; font-size: 15px; }
-
-        /* Footer */
-        footer { background: #0a0a0a; padding: 80px 10% 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; border-top: 1px solid #1a1a1a; }
-        .footer-col h4 { margin-bottom: 20px; font-size: 16px; color: var(--theme-text); }
-        .footer-col p, .footer-col a { color: #666; font-size: 14px; text-decoration: none; display: block; margin-bottom: 8px; }
-        .footer-logo { font-size: 32px; font-weight: 800; color: #333; margin-bottom: 20px; }
-        .copyright { grid-column: 1 / -1; margin-top: 40px; color: #444; font-size: 12px; }
-
-        @media (max-width: 900px) {
-            .gallery { grid-template-columns: repeat(2, 1fr); }
-            .about-details { grid-template-columns: 1fr; }
-            footer { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo">SOHO</div>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Works</a></li>
-                <li><a href="#">Gallery</a></li>
-                <li><a href="#">Blog</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="gallery" id="dynamic-gallery"></section>
-
-        <section class="about-section">
-            <div class="about-header">
-                <h2>About</h2>
-            </div>
-            <div class="about-content-main">
-                <h1>We are a full-service creative agency based in LA.</h1>
-            </div>
-            <div class="about-details">
-                <div class="col">
-                    <p>Graphic and web design is our business. We attach great importance to 'craftsmanship', but also to service and prompt delivery.</p>
-                </div>
-                <div class="col">
-                    <p>Our team is both close-knit and ultra-professional. You want an original design, tailored to your needs? We deliver dynamism and professionalism.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-col"><div class="footer-logo">SOHO</div></div>
-        <div class="footer-col">
-            <h4>Find Us Here</h4>
-            <p>SOHO Co.</p>
-            <p>155 Sixth Avenue</p>
-        </div>
-        <div class="footer-col">
-            <h4>Want to Say Hi?</h4>
-            <p>Phone: 800 1234 56 78</p>
-            <p>Email: <a href="mailto:info@yoursite.com" style="display:inline; color:var(--theme-primary);">info@yoursite.com</a></p>
-        </div>
-        <div class="footer-col">
-            <h4>Also Visit Us On</h4>
-            <a href="#">Twitter</a>
-            <a href="#">Instagram</a>
-        </div>
-        <div class="copyright">© 2026 SOHO Pro</div>
-    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const dataElement = document.getElementById('cms-blog-data');
-            if (dataElement) {
-                try {
-                    const cmsData = JSON.parse(dataElement.textContent);
-                    const posts = cmsData.recent || [];
-                    const gallery = document.getElementById('dynamic-gallery');
-                    
-                    posts.forEach((post, index) => {
-                        // Fallback image if the post doesn't have a featured image yet
-                        const imageUrl = post.featuredImage || `https://picsum.photos/400/400?random=${index + 1}`;
-                        const postUrl = `./posts/${post.slug}.html`; 
-                        
-                        gallery.innerHTML += `
-                            <a href="${postUrl}" class="gallery-item">
-                                <img src="${imageUrl}" alt="${post.title}" loading="lazy">
-                                <div class="overlay">
-                                    <span>${post.title}</span>
-                                </div>
-                            </a>
-                        `;
-                    });
-                } catch(e) {
-                    console.error("Failed to parse CMS data", e);
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: 'var(--theme-primary, #201c87)',
+                            light: 'var(--theme-surface, #f5f5f5)'
+                        }
+                    }
                 }
             }
+        }
+    </script>
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .img-container { overflow: hidden; }
+        .img-container img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .group:hover .img-container img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-white text-gray-900 antialiased selection:bg-brand-blue selection:text-white">
+
+    <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900">Whereby</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+                <a href="#" class="text-gray-600 hover:text-gray-900">Support</a>
+                <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors">Try for free</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="gsap-subnav border-b border-gray-200" id="category-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex gap-8 overflow-x-auto no-scrollbar py-4 text-sm font-medium text-gray-500 whitespace-nowrap" id="filter-container">
+                <button onclick="filterPosts('')" class="text-gray-900 border-b-2 border-gray-900 pb-4 -mb-4 filter-btn" data-cat="">All</button>
+                </nav>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div id="post-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            </div>
+    </main>
+
+    <footer class="gsap-footer border-t border-gray-200 mt-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-sm">
+                <div>
+                    <h4 class="font-serif font-semibold text-gray-900 mb-6 text-lg">About</h4>
+                    <ul class="space-y-4 text-gray-600">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">About us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Our vision</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Retrieve data injected by CMS Hub Pro
+            const cmsData = document.getElementById('cms-blog-data') 
+                            ? JSON.parse(document.getElementById('cms-blog-data').textContent) 
+                            : { recent: [], featured: [], categories: [] };
+            
+            const allPosts = cmsData.recent || [];
+            const categories = cmsData.categories || [];
+            const grid = document.getElementById('post-grid');
+            const filterContainer = document.getElementById('filter-container');
+
+            // Render Categories in Subnav
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = "hover:text-gray-900 transition-colors pb-4 -mb-4 filter-btn";
+                btn.textContent = cat.name;
+                btn.setAttribute('data-cat', cat.id);
+                btn.onclick = () => filterPosts(cat.id);
+                filterContainer.appendChild(btn);
+            });
+
+            // Make filterPosts global so buttons can call it
+            window.filterPosts = (catId) => {
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    if (btn.getAttribute('data-cat') === catId) {
+                        btn.classList.add('text-gray-900', 'border-b-2', 'border-gray-900');
+                    } else {
+                        btn.classList.remove('text-gray-900', 'border-b-2', 'border-gray-900');
+                    }
+                });
+
+                // Filter and render
+                const filtered = catId ? allPosts.filter(p => p.categories && p.categories.includes(catId)) : allPosts;
+                renderGrid(filtered);
+            };
+
+            function renderGrid(posts) {
+                if (posts.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500 font-medium">No posts found.</div>`;
+                    return;
+                }
+
+                grid.innerHTML = posts.map((post, index) => {
+                    // Make the first item a large feature card
+                    if (index === 0 && posts.length > 2) {
+                        return `
+                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${post.slug}.html'">
+                            <img src="${post.featuredImage || 'https://via.placeholder.com/1200x800?text=No+Image'}" alt="${post.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="relative p-8 text-white z-10">
+                                <h2 class="font-serif text-3xl md:text-5xl leading-tight mb-4 group-hover:text-gray-200 transition-colors">${post.title}</h2>
+                                <p class="text-sm text-gray-300 font-medium">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+                            </div>
+                        </article>`;
+                    }
+
+                    // Standard Grid Card
+                    return `
+                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${post.slug}.html'">
+                        <div class="img-container rounded-xl mb-4 aspect-video bg-gray-100">
+                            <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-500 font-medium mb-2 uppercase tracking-wide">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+                        <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-brand-blue transition-colors">${post.title}</h3>
+                        <p class="text-sm text-gray-600 line-clamp-3">${post.seoDescription || ''}</p>
+                    </article>`;
+                }).join('');
+
+                initAnimations();
+            }
+
+            function initAnimations() {
+                gsap.registerPlugin(ScrollTrigger);
+                ScrollTrigger.getAll().forEach(t => t.kill()); // Kill old triggers on re-render
+
+                const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+                tl.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 })
+                  .fromTo(".gsap-subnav", { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4");
+
+                const cards = gsap.utils.toArray('.gsap-card');
+                cards.forEach((card) => {
+                    gsap.fromTo(card, 
+                        { y: 40, opacity: 0 },
+                        {
+                            y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+                            scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" }
+                        }
+                    );
+                });
+            }
+
+            // Initial load
+            renderGrid(allPosts);
         });
     </script>
 </body>
