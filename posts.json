@@ -1,5 +1,48 @@
 [
   {
+    "id": "post-hybrid-inclusion",
+    "slug": "how-to-run-an-effective-and-inclusive-hybrid-meeting",
+    "title": "How to Run an Effective and Inclusive Hybrid Meeting",
+    "date": "2026-04-10 10:00:00",
+    "featured": true,
+    "featuredImage": "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "seoDescription": "Ensure every voice is heard during your hybrid meetings with these facilitation tips for inclusive and productive collaboration.",
+    "categories": [
+      "Productivity"
+    ],
+    "topics": [],
+    "tags": [
+      "inclusion",
+      "hybrid meetings",
+      "meeting facilitation"
+    ],
+    "targets": [
+      "1775553805120"
+    ]
+  },
+  {
+    "id": "post-desk-yoga",
+    "slug": "5-desk-yoga-poses-to-reset-your-working-day",
+    "title": "5 Desk Yoga Poses to Reset Your Working Day",
+    "date": "2026-04-08 10:30:00",
+    "featured": true,
+    "featuredImage": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "seoDescription": "Learn five easy yoga poses you can do at your desk to relieve physical tension and reset your mind during a busy workday.",
+    "categories": [
+      "Wellness"
+    ],
+    "topics": [],
+    "tags": [
+      "yoga",
+      "desk stretches",
+      "productivity",
+      "mental health"
+    ],
+    "targets": [
+      "1775553805120"
+    ]
+  },
+  {
     "id": "post-4643f4b2-7817-4049-80d8-d3e369d03c2d",
     "slug": "the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity",
     "title": "The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity",

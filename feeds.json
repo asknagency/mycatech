@@ -4,6 +4,31 @@
   "home_page_url": "https://asknagency.github.io/mycatech",
   "items": [
     {
+      "id": "https://asknagency.github.io/mycatech/posts/how-to-run-an-effective-and-inclusive-hybrid-meeting.html",
+      "url": "https://asknagency.github.io/mycatech/posts/how-to-run-an-effective-and-inclusive-hybrid-meeting.html",
+      "title": "How to Run an Effective and Inclusive Hybrid Meeting",
+      "summary": "Ensure every voice is heard during your hybrid meetings with these facilitation tips for inclusive and productive collaboration.",
+      "date_published": "2026-04-10T04:30:00.000Z",
+      "tags": [
+        "inclusion",
+        "hybrid meetings",
+        "meeting facilitation"
+      ]
+    },
+    {
+      "id": "https://asknagency.github.io/mycatech/posts/5-desk-yoga-poses-to-reset-your-working-day.html",
+      "url": "https://asknagency.github.io/mycatech/posts/5-desk-yoga-poses-to-reset-your-working-day.html",
+      "title": "5 Desk Yoga Poses to Reset Your Working Day",
+      "summary": "Learn five easy yoga poses you can do at your desk to relieve physical tension and reset your mind during a busy workday.",
+      "date_published": "2026-04-08T05:00:00.000Z",
+      "tags": [
+        "yoga",
+        "desk stretches",
+        "productivity",
+        "mental health"
+      ]
+    },
+    {
       "id": "https://asknagency.github.io/mycatech/posts/the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity.html",
       "url": "https://asknagency.github.io/mycatech/posts/the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity.html",
       "title": "The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity",
