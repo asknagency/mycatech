@@ -48,11 +48,7 @@
     <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900">Whereby</a>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
-                <a href="#" class="text-gray-600 hover:text-gray-900">Support</a>
-                <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors">Try for free</a>
-            </nav>
+            
         </div>
     </header>
 
@@ -72,13 +68,7 @@
     <footer class="gsap-footer border-t border-gray-200 mt-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-sm">
-                <div>
-                    <h4 class="font-serif font-semibold text-gray-900 mb-6 text-lg">About</h4>
-                    <ul class="space-y-4 text-gray-600">
-                        <li><a href="#" class="hover:text-brand-blue transition-colors">About us</a></li>
-                        <li><a href="#" class="hover:text-brand-blue transition-colors">Our vision</a></li>
-                    </ul>
-                </div>
+                
             </div>
         </div>
     </footer>
@@ -146,7 +136,7 @@
 
                     // Standard Grid Card
                     return `
-                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${post.slug}.html'">
+                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='/posts/${post.slug}.html'">
                         <div class="img-container rounded-xl mb-4 aspect-video bg-gray-100">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
                         </div>
