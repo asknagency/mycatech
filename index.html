@@ -169,7 +169,7 @@
 
                 grid.innerHTML = posts.map((post, index) => {
                     // Simplified URL logic
-                    const postUrl = `/${postsDir}/${post.slug}.html`;
+                    const postUrl = `${postsDir}/${post.slug}`;
 
                     if (index === 0 && posts.length > 2) {
                         return `
