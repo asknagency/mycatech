@@ -6,21 +6,18 @@
     {{head_inject}}
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['var(--theme-font)', 'system-ui', 'sans-serif'],
+                        serif: ['var(--theme-font)', 'Georgia', 'serif'],
                     },
                     colors: {
                         brand: {
-                            blue: 'var(--theme-primary, #201c87)', // Uses CMS theme variable
+                            blue: 'var(--theme-primary, #201c87)',
                             light: 'var(--theme-surface, #f5f5f5)'
                         }
                     }
@@ -38,8 +35,8 @@
 
         /* Basic Markdown Prose Styling for injected content */
         .prose { max-w-none; }
-        .prose h1, .prose h2, .prose h3 { font-family: 'Playfair Display', serif; color: #111827; margin-top: 2rem; margin-bottom: 1rem; }
-        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: #374151; }
+        .prose h1, .prose h2, .prose h3 { color: #111827; margin-top: 2rem; margin-bottom: 1rem; }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.8; color: var(--theme-text, #374151); }
         .prose a { color: var(--theme-primary, #201c87); text-decoration: underline; }
         .prose img { border-radius: 0.75rem; margin-top: 2rem; margin-bottom: 2rem; }
         .prose figure { margin-top: 2rem; margin-bottom: 2rem; }
