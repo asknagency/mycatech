@@ -132,22 +132,24 @@
             const allPosts = cmsData.recent || [];
             const categories = cmsData.categories || [];
             
-            // Logic to build Base URL for Slugs
-            const repoName = siteMeta.repoName || '';
-            const blogDomain = siteMeta.blogDomain || '';
-            const postsDir = (siteMeta.postsDir || 'posts').replace(/^\/|\/$/g, '');
+            // --- URL BUILDING LOGIC ---
+            const repoName = (siteMeta.repoName || '').trim().replace(/^\/|\/$/g, '');
+            const blogDomain = (siteMeta.blogDomain || '').trim().replace(/^\/|\/$/g, '');
+            const postsDir = (siteMeta.postsDir || 'posts').trim().replace(/^\/|\/$/g, '');
 
-            let baseUrl = '';
-            if (blogDomain && blogDomain.trim() !== '') {
-                baseUrl = blogDomain.startsWith('http') ? blogDomain : `https://${blogDomain}`;
-            } else if (repoName && repoName.trim() !== '') {
-                baseUrl = `/${repoName}`;
+            let finalBase = '';
+            if (blogDomain) {
+                // If a domain is specified, use it as the absolute base
+                finalBase = blogDomain.startsWith('http') ? blogDomain : `https://${blogDomain}`;
+            } else {
+                // Otherwise use repoName for GitHub Pages root-relative paths
+                finalBase = repoName ? `/${repoName}` : '';
             }
 
-            // Update Header Links to respect Repo Path
-            const homePath = repoName ? `/${repoName}/` : '/';
-            document.getElementById('logo-link').href = homePath;
-            document.getElementById('home-link').href = homePath;
+            // Correct Header Links
+            const rootPath = repoName && !blogDomain ? `/${repoName}/` : '/';
+            document.getElementById('logo-link').href = rootPath;
+            document.getElementById('home-link').href = rootPath;
 
             const grid = document.getElementById('post-grid');
             const filterContainer = document.getElementById('filter-container');
@@ -169,7 +171,6 @@
                         btn.classList.remove('text-gray-900', 'border-b-2', 'border-gray-900');
                     }
                 });
-
                 const filtered = catId ? allPosts.filter(p => p.categories && p.categories.includes(catId)) : allPosts;
                 renderGrid(filtered);
             };
@@ -181,8 +182,10 @@
                 }
 
                 grid.innerHTML = posts.map((post, index) => {
-                    // Combine pieces into a clean URL
-                    const postUrl = `${baseUrl}/${postsDir}/${post.slug}.html`.replace(/\/+/g, '/').replace(':/', '://');
+                    // Safe URL construction: Join segments and handle protocol
+                    const cleanSlug = post.slug.replace(/^\/|\/$/g, '');
+                    const path = `${postsDir}/${cleanSlug}.html`;
+                    const postUrl = finalBase.endsWith('/') ? `${finalBase}${path}` : `${finalBase}/${path}`;
 
                     if (index === 0 && posts.length > 2) {
                         return `
@@ -213,23 +216,17 @@
             function initAnimations() {
                 gsap.registerPlugin(ScrollTrigger);
                 ScrollTrigger.getAll().forEach(t => t.kill());
-
                 const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
                 tl.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 })
                   .fromTo(".gsap-subnav", { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4");
 
-                const cards = gsap.utils.toArray('.gsap-card');
-                cards.forEach((card) => {
-                    gsap.fromTo(card, 
-                        { y: 40, opacity: 0 },
-                        {
-                            y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-                            scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" }
-                        }
-                    );
+                gsap.utils.toArray('.gsap-card').forEach((card) => {
+                    gsap.fromTo(card, { y: 40, opacity: 0 }, {
+                        y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+                        scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" }
+                    });
                 });
             }
-
             renderGrid(allPosts);
         });
     </script>
