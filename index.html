@@ -204,7 +204,7 @@
                     }
 
                     return `
-                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='/${siteMeta.postsDir}/${post.slug}'">
+                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='/${siteMeta.repoName}/${siteMeta.postsDir}/${post.slug}'">
                         <div class="img-container rounded-xl mb-4 aspect-video bg-gray-100">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
                         </div>
