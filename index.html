@@ -86,9 +86,9 @@
 
     <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" id="logo-link" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
+            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="/" id="home-link" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
+                <a href="/" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1 skeleton-text">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 skeleton-text">Support</a>
                 <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
@@ -132,14 +132,10 @@
                             ? JSON.parse(document.getElementById('cms-blog-data').textContent) 
                             : { recent: [], featured: [], categories: [], siteMeta: {} };
             
-            const siteMeta = cmsData.siteMeta || {};
             const allPosts = cmsData.recent || [];
             const categories = cmsData.categories || [];
-            // Correct Header Links
-            const rootPath = repoName && !blogDomain ? `/${repoName}/` : '/';
-            document.getElementById('logo-link').href = rootPath;
-            document.getElementById('home-link').href = rootPath;
-
+            const postsDir = cmsData.siteMeta?.postsDir || 'posts';
+            
             const grid = document.getElementById('post-grid');
             const filterContainer = document.getElementById('filter-container');
 
@@ -160,6 +156,7 @@
                         btn.classList.remove('text-gray-900', 'border-b-2', 'border-gray-900');
                     }
                 });
+
                 const filtered = catId ? allPosts.filter(p => p.categories && p.categories.includes(catId)) : allPosts;
                 renderGrid(filtered);
             };
@@ -171,10 +168,12 @@
                 }
 
                 grid.innerHTML = posts.map((post, index) => {
-                    
+                    // Simplified URL logic
+                    const postUrl = `/${postsDir}/${post.slug}.html`;
+
                     if (index === 0 && posts.length > 2) {
                         return `
-                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${siteMeta.postsDir}/${post.slug}'">
+                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${postUrl}'">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/1200x800?text=No+Image'}" alt="${post.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="relative p-8 text-white z-10">
@@ -185,7 +184,7 @@
                     }
 
                     return `
-                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${siteMeta.postsDir}/${post.slug}'">
+                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${postUrl}'">
                         <div class="img-container rounded-xl mb-4 aspect-video bg-gray-100">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
                         </div>
@@ -201,17 +200,23 @@
             function initAnimations() {
                 gsap.registerPlugin(ScrollTrigger);
                 ScrollTrigger.getAll().forEach(t => t.kill());
+
                 const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
                 tl.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 })
                   .fromTo(".gsap-subnav", { y: -10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4");
 
-                gsap.utils.toArray('.gsap-card').forEach((card) => {
-                    gsap.fromTo(card, { y: 40, opacity: 0 }, {
-                        y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-                        scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" }
-                    });
+                const cards = gsap.utils.toArray('.gsap-card');
+                cards.forEach((card) => {
+                    gsap.fromTo(card, 
+                        { y: 40, opacity: 0 },
+                        {
+                            y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+                            scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" }
+                        }
+                    );
                 });
             }
+
             renderGrid(allPosts);
         });
     </script>
