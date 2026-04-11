@@ -88,9 +88,9 @@
 
     <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
+            <a href="/" id="layout-logo" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="/" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
+                <a href="/" id="layout-home" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1 skeleton-text">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 skeleton-text">Support</a>
                 <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
@@ -123,6 +123,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Adjust navigation links based on repository depth
+            // If the URL contains more than 3 segments (e.g. /repo/posts/name.html), we need to go up
+            const pathParts = window.location.pathname.split('/').filter(p => p !== '');
+            
+            // This logic assumes posts are in a subfolder. If we are in /posts/ or /repo/posts/
+            // we redirect the logo back to the appropriate root.
+            if (pathParts.length >= 2) {
+                const isSubpath = pathParts.length > 2; // e.g. /repo/posts/post.html
+                const rootPath = isSubpath ? `/${pathParts[0]}/` : '/';
+                document.getElementById('layout-logo').href = rootPath;
+                document.getElementById('layout-home').href = rootPath;
+            }
+
             gsap.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
             gsap.fromTo(".gsap-content", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: "power3.out" });
         });

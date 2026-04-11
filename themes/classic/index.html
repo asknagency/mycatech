@@ -55,7 +55,6 @@
         .img-container img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .group:hover .img-container img { transform: scale(1.05); }
 
-        /* Skeleton Loading CSS */
         .font-loading .skeleton-text { 
             background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%); 
             background-size: 200% 100%; 
@@ -83,9 +82,9 @@
 
     <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
+            <a href="/" id="logo-link" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                <a href="/" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
+                <a href="/" id="home-link" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1 skeleton-text">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 skeleton-text">Support</a>
                 <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
@@ -129,11 +128,27 @@
                             ? JSON.parse(document.getElementById('cms-blog-data').textContent) 
                             : { recent: [], featured: [], categories: [], siteMeta: {} };
             
+            const siteMeta = cmsData.siteMeta || {};
             const allPosts = cmsData.recent || [];
             const categories = cmsData.categories || [];
-            // FIX: Identify the posts directory from CMS metadata
-            const postsDir = (cmsData.siteMeta?.postsDir || 'posts').replace(/^\/|\/$/g, ''); 
             
+            // Logic to build Base URL for Slugs
+            const repoName = siteMeta.repoName || '';
+            const blogDomain = siteMeta.blogDomain || '';
+            const postsDir = (siteMeta.postsDir || 'posts').replace(/^\/|\/$/g, '');
+
+            let baseUrl = '';
+            if (blogDomain && blogDomain.trim() !== '') {
+                baseUrl = blogDomain.startsWith('http') ? blogDomain : `https://${blogDomain}`;
+            } else if (repoName && repoName.trim() !== '') {
+                baseUrl = `/${repoName}`;
+            }
+
+            // Update Header Links to respect Repo Path
+            const homePath = repoName ? `/${repoName}/` : '/';
+            document.getElementById('logo-link').href = homePath;
+            document.getElementById('home-link').href = homePath;
+
             const grid = document.getElementById('post-grid');
             const filterContainer = document.getElementById('filter-container');
 
@@ -166,8 +181,8 @@
                 }
 
                 grid.innerHTML = posts.map((post, index) => {
-                    // FIX: Ensure the slug includes the posts directory prefix
-                    const postUrl = `/${postsDir}/${post.slug}.html`;
+                    // Combine pieces into a clean URL
+                    const postUrl = `${baseUrl}/${postsDir}/${post.slug}.html`.replace(/\/+/g, '/').replace(':/', '://');
 
                     if (index === 0 && posts.length > 2) {
                         return `
