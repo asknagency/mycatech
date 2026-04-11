@@ -85,6 +85,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="/" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1 skeleton-text">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 skeleton-text">Support</a>
                 <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
@@ -124,17 +125,18 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Retrieve data injected by CMS Hub Pro
             const cmsData = document.getElementById('cms-blog-data') 
                             ? JSON.parse(document.getElementById('cms-blog-data').textContent) 
-                            : { recent: [], featured: [], categories: [] };
+                            : { recent: [], featured: [], categories: [], siteMeta: {} };
             
             const allPosts = cmsData.recent || [];
             const categories = cmsData.categories || [];
+            // FIX: Identify the posts directory from CMS metadata
+            const postsDir = (cmsData.siteMeta?.postsDir || 'posts').replace(/^\/|\/$/g, ''); 
+            
             const grid = document.getElementById('post-grid');
             const filterContainer = document.getElementById('filter-container');
 
-            // Render Categories in Subnav
             categories.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.className = "hover:text-gray-900 transition-colors pb-4 -mb-4 filter-btn skeleton-text";
@@ -144,9 +146,7 @@
                 filterContainer.appendChild(btn);
             });
 
-            // Make filterPosts global so buttons can call it
             window.filterPosts = (catId) => {
-                // Update active state
                 document.querySelectorAll('.filter-btn').forEach(btn => {
                     if (btn.getAttribute('data-cat') === catId) {
                         btn.classList.add('text-gray-900', 'border-b-2', 'border-gray-900');
@@ -155,7 +155,6 @@
                     }
                 });
 
-                // Filter and render
                 const filtered = catId ? allPosts.filter(p => p.categories && p.categories.includes(catId)) : allPosts;
                 renderGrid(filtered);
             };
@@ -167,10 +166,12 @@
                 }
 
                 grid.innerHTML = posts.map((post, index) => {
-                    // Make the first item a large feature card
+                    // FIX: Ensure the slug includes the posts directory prefix
+                    const postUrl = `/${postsDir}/${post.slug}.html`;
+
                     if (index === 0 && posts.length > 2) {
                         return `
-                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${post.slug}.html'">
+                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${postUrl}'">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/1200x800?text=No+Image'}" alt="${post.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="relative p-8 text-white z-10">
@@ -180,9 +181,8 @@
                         </article>`;
                     }
 
-                    // Standard Grid Card
                     return `
-                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${post.slug}.html'">
+                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${postUrl}'">
                         <div class="img-container rounded-xl mb-4 aspect-video bg-gray-100">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
                         </div>
@@ -197,7 +197,7 @@
 
             function initAnimations() {
                 gsap.registerPlugin(ScrollTrigger);
-                ScrollTrigger.getAll().forEach(t => t.kill()); // Kill old triggers on re-render
+                ScrollTrigger.getAll().forEach(t => t.kill());
 
                 const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
                 tl.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 })
@@ -215,7 +215,6 @@
                 });
             }
 
-            // Initial load
             renderGrid(allPosts);
         });
     </script>
