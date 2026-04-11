@@ -80,5 +80,26 @@
     "targets": [
       "1775553805120"
     ]
+  },
+  {
+    "id": "post-meeting-manifesto",
+    "slug": "the-whereby-meetings-manifesto-a-simple-framework-for-better-meetings-every-time",
+    "title": "The Whereby Meetings Manifesto: A Simple Framework for Better Meetings Every Time",
+    "date": "2026-04-06 09:00:00",
+    "featured": false,
+    "featuredImage": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80",
+    "seoDescription": "Adopt the Whereby Meetings Manifesto to reclaim your focus time and make your team's meetings more efficient and purposeful.",
+    "categories": [
+      "Anywhere Works"
+    ],
+    "topics": [],
+    "tags": [
+      "manifesto",
+      "meeting culture",
+      "focus time"
+    ],
+    "targets": [
+      "1775553805120"
+    ]
   }
 ]

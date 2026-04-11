@@ -10,10 +10,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     
+    <script>
+        (function() {
+            document.documentElement.classList.add('font-loading');
+            if (document.fonts) {
+                document.fonts.ready.then(function() {
+                    document.documentElement.classList.remove('font-loading');
+                    document.documentElement.classList.add('font-loaded');
+                });
+            } else {
+                setTimeout(function() {
+                    document.documentElement.classList.remove('font-loading');
+                    document.documentElement.classList.add('font-loaded');
+                }, 1500);
+            }
+        })();
+    </script>
+
     
-<style>:root { --theme-primary: #14b8a6; --theme-surface: #ffffff; --theme-text: #333333; }</style>
+<style>:root { --theme-primary: #14b8a6; --theme-surface: #ffffff; --theme-text: #333333; --theme-font: system-ui, sans-serif; }</style>
 <script id="cms-blog-data" type="application/json">
-{"featured":[{"id":"post-hybrid-inclusion","slug":"how-to-run-an-effective-and-inclusive-hybrid-meeting","title":"How to Run an Effective and Inclusive Hybrid Meeting","date":"2026-04-10 10:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Ensure every voice is heard during your hybrid meetings with these facilitation tips for inclusive and productive collaboration.","categories":["Productivity"],"topics":[],"tags":["inclusion","hybrid meetings","meeting facilitation"],"targets":["1775553805120"]},{"id":"post-distributed-leadership","slug":"how-to-succeed-as-the-leader-of-a-distributed-team-","title":"How to succeed as the leader of a distributed team?","date":"2026-04-08 11:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Manage your remote and distributed teams more effectively with these leadership strategies focused on communication and trust.","categories":["Management"],"topics":[],"tags":["leadership","distributed teams","remote management"],"targets":["1775553805120"]},{"id":"post-desk-yoga","slug":"5-desk-yoga-poses-to-reset-your-working-day","title":"5 Desk Yoga Poses to Reset Your Working Day","date":"2026-04-08 10:30:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Learn five easy yoga poses you can do at your desk to relieve physical tension and reset your mind during a busy workday.","categories":["Wellness"],"topics":[],"tags":["yoga","desk stretches","productivity","mental health"],"targets":["1775553805120"]},{"id":"post-4643f4b2-7817-4049-80d8-d3e369d03c2d","slug":"the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity","title":"The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity","date":"2026-04-07 14:54:25","featured":true,"featuredImage":"https://images.unsplash.com/photo-1451187580459-43490279c0fa","seoDescription":"In recent months, the focus of artificial intelligence has shifted dramatically from passive chat systems to active, autonomous agents. These systems,...","tags":["AI","Agentic Workflows","Productivity","Automation"],"targets":["1775553805120"]}],"recent":[{"id":"post-hybrid-inclusion","slug":"how-to-run-an-effective-and-inclusive-hybrid-meeting","title":"How to Run an Effective and Inclusive Hybrid Meeting","date":"2026-04-10 10:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Ensure every voice is heard during your hybrid meetings with these facilitation tips for inclusive and productive collaboration.","categories":["Productivity"],"topics":[],"tags":["inclusion","hybrid meetings","meeting facilitation"],"targets":["1775553805120"]},{"id":"post-distributed-leadership","slug":"how-to-succeed-as-the-leader-of-a-distributed-team-","title":"How to succeed as the leader of a distributed team?","date":"2026-04-08 11:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Manage your remote and distributed teams more effectively with these leadership strategies focused on communication and trust.","categories":["Management"],"topics":[],"tags":["leadership","distributed teams","remote management"],"targets":["1775553805120"]},{"id":"post-desk-yoga","slug":"5-desk-yoga-poses-to-reset-your-working-day","title":"5 Desk Yoga Poses to Reset Your Working Day","date":"2026-04-08 10:30:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Learn five easy yoga poses you can do at your desk to relieve physical tension and reset your mind during a busy workday.","categories":["Wellness"],"topics":[],"tags":["yoga","desk stretches","productivity","mental health"],"targets":["1775553805120"]},{"id":"post-4643f4b2-7817-4049-80d8-d3e369d03c2d","slug":"the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity","title":"The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity","date":"2026-04-07 14:54:25","featured":true,"featuredImage":"https://images.unsplash.com/photo-1451187580459-43490279c0fa","seoDescription":"In recent months, the focus of artificial intelligence has shifted dramatically from passive chat systems to active, autonomous agents. These systems,...","tags":["AI","Agentic Workflows","Productivity","Automation"],"targets":["1775553805120"]}],"categories":[{"id":"1775524942776","name":"Lifestyle","slug":"lifestyle","description":""},{"id":"1775524990736","name":"Finance","slug":"finance","description":""},{"id":"1775525005054","name":"Technology","slug":"technology","description":""},{"id":"1775525018261","name":"Health","slug":"health","description":""},{"id":"1775525147753","name":"Sports","slug":"sports","description":""}],"topics":[{"id":"top-26c1e5d1-bac5-4dd1-9b99-3d2e4a3b7c1e","name":"Iran War","slug":"iran-war"},{"id":"top-9a496301-3c90-4c6f-936a-47d53f64ac2c","name":"Donald Trump","slug":"donald-trump"}]}
+{"featured":[{"id":"post-hybrid-inclusion","slug":"how-to-run-an-effective-and-inclusive-hybrid-meeting","title":"How to Run an Effective and Inclusive Hybrid Meeting","date":"2026-04-10 10:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Ensure every voice is heard during your hybrid meetings with these facilitation tips for inclusive and productive collaboration.","categories":["Productivity"],"topics":[],"tags":["inclusion","hybrid meetings","meeting facilitation"],"targets":["1775553805120"]},{"id":"post-distributed-leadership","slug":"how-to-succeed-as-the-leader-of-a-distributed-team-","title":"How to succeed as the leader of a distributed team?","date":"2026-04-08 11:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Manage your remote and distributed teams more effectively with these leadership strategies focused on communication and trust.","categories":["Management"],"topics":[],"tags":["leadership","distributed teams","remote management"],"targets":["1775553805120"]},{"id":"post-desk-yoga","slug":"5-desk-yoga-poses-to-reset-your-working-day","title":"5 Desk Yoga Poses to Reset Your Working Day","date":"2026-04-08 10:30:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Learn five easy yoga poses you can do at your desk to relieve physical tension and reset your mind during a busy workday.","categories":["Wellness"],"topics":[],"tags":["yoga","desk stretches","productivity","mental health"],"targets":["1775553805120"]},{"id":"post-4643f4b2-7817-4049-80d8-d3e369d03c2d","slug":"the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity","title":"The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity","date":"2026-04-07 14:54:25","featured":true,"featuredImage":"https://images.unsplash.com/photo-1451187580459-43490279c0fa","seoDescription":"In recent months, the focus of artificial intelligence has shifted dramatically from passive chat systems to active, autonomous agents. These systems,...","tags":["AI","Agentic Workflows","Productivity","Automation"],"targets":["1775553805120"]}],"recent":[{"id":"post-hybrid-inclusion","slug":"how-to-run-an-effective-and-inclusive-hybrid-meeting","title":"How to Run an Effective and Inclusive Hybrid Meeting","date":"2026-04-10 10:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Ensure every voice is heard during your hybrid meetings with these facilitation tips for inclusive and productive collaboration.","categories":["Productivity"],"topics":[],"tags":["inclusion","hybrid meetings","meeting facilitation"],"targets":["1775553805120"]},{"id":"post-distributed-leadership","slug":"how-to-succeed-as-the-leader-of-a-distributed-team-","title":"How to succeed as the leader of a distributed team?","date":"2026-04-08 11:00:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Manage your remote and distributed teams more effectively with these leadership strategies focused on communication and trust.","categories":["Management"],"topics":[],"tags":["leadership","distributed teams","remote management"],"targets":["1775553805120"]},{"id":"post-desk-yoga","slug":"5-desk-yoga-poses-to-reset-your-working-day","title":"5 Desk Yoga Poses to Reset Your Working Day","date":"2026-04-08 10:30:00","featured":true,"featuredImage":"https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80","seoDescription":"Learn five easy yoga poses you can do at your desk to relieve physical tension and reset your mind during a busy workday.","categories":["Wellness"],"topics":[],"tags":["yoga","desk stretches","productivity","mental health"],"targets":["1775553805120"]},{"id":"post-4643f4b2-7817-4049-80d8-d3e369d03c2d","slug":"the-rise-of-agentic-ai-how-autonomous-workflows-are-redefining-productivity","title":"The Rise of Agentic AI: How Autonomous Workflows are Redefining Productivity","date":"2026-04-07 14:54:25","featured":true,"featuredImage":"https://images.unsplash.com/photo-1451187580459-43490279c0fa","seoDescription":"In recent months, the focus of artificial intelligence has shifted dramatically from passive chat systems to active, autonomous agents. These systems,...","tags":["AI","Agentic Workflows","Productivity","Automation"],"targets":["1775553805120"]},{"id":"post-meeting-manifesto","slug":"the-whereby-meetings-manifesto-a-simple-framework-for-better-meetings-every-time","title":"The Whereby Meetings Manifesto: A Simple Framework for Better Meetings Every Time","date":"2026-04-06 09:00:00","featured":false,"featuredImage":"https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80","seoDescription":"Adopt the Whereby Meetings Manifesto to reclaim your focus time and make your team's meetings more efficient and purposeful.","categories":["Anywhere Works"],"topics":[],"tags":["manifesto","meeting culture","focus time"],"targets":["1775553805120"]}],"categories":[{"id":"1775524942776","name":"Lifestyle","slug":"lifestyle","description":""},{"id":"1775524990736","name":"Finance","slug":"finance","description":""},{"id":"1775525005054","name":"Technology","slug":"technology","description":""},{"id":"1775525018261","name":"Health","slug":"health","description":""},{"id":"1775525147753","name":"Sports","slug":"sports","description":""}],"topics":[{"id":"top-26c1e5d1-bac5-4dd1-9b99-3d2e4a3b7c1e","name":"Iran War","slug":"iran-war"},{"id":"top-9a496301-3c90-4c6f-936a-47d53f64ac2c","name":"Donald Trump","slug":"donald-trump"}],"siteMeta":{"domain":"https://asknagency.github.io/mycatech","postsDir":"posts","logo":""}}
 </script>
 
     <script>
@@ -41,34 +58,67 @@
         .img-container { overflow: hidden; }
         .img-container img { transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
         .group:hover .img-container img { transform: scale(1.05); }
+
+        /* Skeleton Loading CSS */
+        .font-loading .skeleton-text { 
+            background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%); 
+            background-size: 200% 100%; 
+            animation: shimmer 1.5s infinite; 
+            color: transparent !important; 
+            border-radius: 4px; 
+            display: inline-block;
+        }
+        @media (prefers-color-scheme: dark) { 
+            .font-loading .skeleton-text { background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%); } 
+        }
+        @keyframes shimmer { 
+            0% { background-position: 200% 0; } 
+            100% { background-position: -200% 0; } 
+        }
+        .font-loaded .skeleton-text { 
+            background: none; 
+            animation: none; 
+            color: inherit !important; 
+            transition: color 0.3s ease-in; 
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900 antialiased selection:bg-brand-blue selection:text-white">
 
     <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900">Whereby</a>
-            
+            <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900 skeleton-text">Whereby</a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1 skeleton-text">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 skeleton-text">Support</a>
+                <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
+            </nav>
         </div>
     </header>
 
     <div class="gsap-subnav border-b border-gray-200" id="category-nav">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav class="flex gap-8 overflow-x-auto no-scrollbar py-4 text-sm font-medium text-gray-500 whitespace-nowrap" id="filter-container">
-                <button onclick="filterPosts('')" class="text-gray-900 border-b-2 border-gray-900 pb-4 -mb-4 filter-btn" data-cat="">All</button>
-                </nav>
+                <button onclick="filterPosts('')" class="text-gray-900 border-b-2 border-gray-900 pb-4 -mb-4 filter-btn skeleton-text" data-cat="">All</button>
+            </nav>
         </div>
     </div>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div id="post-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            </div>
+        </div>
     </main>
 
     <footer class="gsap-footer border-t border-gray-200 mt-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-sm">
-                
+                <div>
+                    <h4 class="font-serif font-semibold text-gray-900 mb-6 text-lg skeleton-text">About</h4>
+                    <ul class="space-y-4 text-gray-600">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors skeleton-text">About us</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors skeleton-text">Our vision</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </footer>
@@ -91,7 +141,7 @@
             // Render Categories in Subnav
             categories.forEach(cat => {
                 const btn = document.createElement('button');
-                btn.className = "hover:text-gray-900 transition-colors pb-4 -mb-4 filter-btn";
+                btn.className = "hover:text-gray-900 transition-colors pb-4 -mb-4 filter-btn skeleton-text";
                 btn.textContent = cat.name;
                 btn.setAttribute('data-cat', cat.id);
                 btn.onclick = () => filterPosts(cat.id);
@@ -116,7 +166,7 @@
 
             function renderGrid(posts) {
                 if (posts.length === 0) {
-                    grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500 font-medium">No posts found.</div>`;
+                    grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-500 font-medium skeleton-text">No posts found.</div>`;
                     return;
                 }
 
@@ -124,25 +174,25 @@
                     // Make the first item a large feature card
                     if (index === 0 && posts.length > 2) {
                         return `
-                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='/posts/${post.slug}.html'">
+                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${post.slug}.html'">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/1200x800?text=No+Image'}" alt="${post.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="relative p-8 text-white z-10">
-                                <h2 class="font-serif text-3xl md:text-5xl leading-tight mb-4 group-hover:text-gray-200 transition-colors">${post.title}</h2>
-                                <p class="text-sm text-gray-300 font-medium">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+                                <h2 class="font-serif text-3xl md:text-5xl leading-tight mb-4 group-hover:text-gray-200 transition-colors skeleton-text">${post.title}</h2>
+                                <p class="text-sm text-gray-300 font-medium skeleton-text">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
                             </div>
                         </article>`;
                     }
 
                     // Standard Grid Card
                     return `
-                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='/posts/${post.slug}.html'">
+                    <article class="gsap-card group cursor-pointer flex flex-col" onclick="window.location.href='${post.slug}.html'">
                         <div class="img-container rounded-xl mb-4 aspect-video bg-gray-100">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
                         </div>
-                        <p class="text-xs text-gray-500 font-medium mb-2 uppercase tracking-wide">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
-                        <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-brand-blue transition-colors">${post.title}</h3>
-                        <p class="text-sm text-gray-600 line-clamp-3">${post.seoDescription || ''}</p>
+                        <p class="text-xs text-gray-500 font-medium mb-2 uppercase tracking-wide skeleton-text">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
+                        <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-brand-blue transition-colors skeleton-text">${post.title}</h3>
+                        <p class="text-sm text-gray-600 line-clamp-3 skeleton-text">${post.seoDescription || ''}</p>
                     </article>`;
                 }).join('');
 
