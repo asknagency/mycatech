@@ -193,7 +193,7 @@
 
                     if (index === 0 && posts.length > 2) {
                         return `
-                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${siteMeta.blogDomain}/${siteMeta.postsDir}/${post.slug}'">
+                        <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='/${siteMeta.postsDir}/${post.slug}'">
                             <img src="${post.featuredImage || 'https://via.placeholder.com/1200x800?text=No+Image'}" alt="${post.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                             <div class="relative p-8 text-white z-10">
