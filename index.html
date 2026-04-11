@@ -135,21 +135,6 @@
             const siteMeta = cmsData.siteMeta || {};
             const allPosts = cmsData.recent || [];
             const categories = cmsData.categories || [];
-            
-            // --- URL BUILDING LOGIC ---
-            const repoName = (siteMeta.repoName || '').trim().replace(/^\/|\/$/g, '');
-            const blogDomain = (siteMeta.blogDomain || '').trim().replace(/^\/|\/$/g, '');
-            const postsDir = (siteMeta.postsDir || 'posts').trim().replace(/^\/|\/$/g, '');
-
-            let finalBase = '';
-            if (blogDomain) {
-                // If a domain is specified, use it as the absolute base
-                finalBase = blogDomain.startsWith('http') ? blogDomain : `https://${blogDomain}`;
-            } else {
-                // Otherwise use repoName for GitHub Pages root-relative paths
-                finalBase = repoName ? `/${repoName}` : '';
-            }
-
             // Correct Header Links
             const rootPath = repoName && !blogDomain ? `/${repoName}/` : '/';
             document.getElementById('logo-link').href = rootPath;
@@ -186,11 +171,7 @@
                 }
 
                 grid.innerHTML = posts.map((post, index) => {
-                    // Safe URL construction: Join segments and handle protocol
-                    const cleanSlug = post.slug.replace(/^\/|\/$/g, '');
-                    const path = `${postsDir}/${cleanSlug}.html`;
-                    const postUrl = finalBase.endsWith('/') ? `${finalBase}${path}` : `${finalBase}/${path}`;
-
+                    
                     if (index === 0 && posts.length > 2) {
                         return `
                         <article class="gsap-card group cursor-pointer lg:col-span-2 relative flex flex-col justify-end min-h-[400px] rounded-xl overflow-hidden shadow-sm" onclick="window.location.href='${siteMeta.postsDir}/${post.slug}'">
