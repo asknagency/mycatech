@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Whereby</title>
+    <meta name="description" content="Discover the latest insights, tips, and news on remote work, productivity, and team collaboration from the Whereby team.">
+    <link rel="canonical" href="https://yourdomain.com/">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
@@ -119,8 +122,8 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -164,8 +167,7 @@
                 }
 
                 grid.innerHTML = posts.map((post, index) => {
-                    // Simplified URL logic
-                    const postUrl = `/${postsDir}/${post.slug}.html`;
+                    const postUrl = `${postsDir}/${post.slug}.html`;
 
                     if (index === 0 && posts.length > 2) {
                         return `
@@ -190,10 +192,16 @@
                     </article>`;
                 }).join('');
 
-                initAnimations();
+                // We must wait for GSAP to load before initializing animations
+                if (window.gsap && window.ScrollTrigger) {
+                    initAnimations();
+                } else {
+                    window.addEventListener('load', initAnimations);
+                }
             }
 
             function initAnimations() {
+                if(!window.gsap) return;
                 gsap.registerPlugin(ScrollTrigger);
                 ScrollTrigger.getAll().forEach(t => t.kill());
 
