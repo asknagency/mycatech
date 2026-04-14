@@ -5,9 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | Whereby</title>
     <meta name="description" content="Discover the latest insights, tips, and news on remote work, productivity, and team collaboration from the Whereby team.">
-    <link rel="canonical" href="https://yourdomain.com/">
     
     <script src="https://cdn.tailwindcss.com" defer></script>
+
+    <script id="tailwind-theme" type="application/json">
+    {
+      "theme": {
+        "extend": {
+          "colors": {
+            "brand": {
+              "primary": "#201c87",
+              "light": "#f5f5f5"
+            }
+          },
+          "fontFamily": {
+            "sans": ["Inter", "sans-serif"],
+            "serif": ["Playfair Display", "serif"]
+          }
+        }
+      }
+    }
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,16 +54,8 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    colors: {
-                        brand: {
-                            blue: 'var(--theme-primary, #201c87)',
-                            light: 'var(--theme-surface, #f5f5f5)'
-                        }
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Playfair Display', 'serif'] },
+                    colors: { brand: { primary: 'var(--theme-primary, #201c87)', light: 'var(--theme-surface, #f5f5f5)' } }
                 }
             }
         }
@@ -69,19 +79,11 @@
         @media (prefers-color-scheme: dark) { 
             .font-loading .skeleton-text { background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%); } 
         }
-        @keyframes shimmer { 
-            0% { background-position: 200% 0; } 
-            100% { background-position: -200% 0; } 
-        }
-        .font-loaded .skeleton-text { 
-            background: none; 
-            animation: none; 
-            color: inherit !important; 
-            transition: color 0.3s ease-in; 
-        }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .font-loaded .skeleton-text { background: none; animation: none; color: inherit !important; transition: color 0.3s ease-in; }
     </style>
 </head>
-<body class="bg-white text-gray-900 antialiased selection:bg-brand-blue selection:text-white">
+<body class="bg-white text-gray-900 antialiased selection:bg-brand-primary selection:text-white">
 
     <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -90,7 +92,7 @@
                 <a href="/" class="text-gray-600 hover:text-gray-900 skeleton-text">Home</a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 flex items-center gap-1 skeleton-text">Product <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                 <a href="#" class="text-gray-600 hover:text-gray-900 skeleton-text">Support</a>
-                <a href="#" class="bg-brand-blue text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
+                <a href="#" class="bg-brand-primary text-white px-5 py-2.5 rounded-lg hover:bg-opacity-90 transition-colors skeleton-text">Try for free</a>
             </nav>
         </div>
     </header>
@@ -114,8 +116,8 @@
                 <div>
                     <h4 class="font-serif font-semibold text-gray-900 mb-6 text-lg skeleton-text">About</h4>
                     <ul class="space-y-4 text-gray-600">
-                        <li><a href="#" class="hover:text-brand-blue transition-colors skeleton-text">About us</a></li>
-                        <li><a href="#" class="hover:text-brand-blue transition-colors skeleton-text">Our vision</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors skeleton-text">About us</a></li>
+                        <li><a href="#" class="hover:text-brand-primary transition-colors skeleton-text">Our vision</a></li>
                     </ul>
                 </div>
             </div>
@@ -187,12 +189,11 @@
                             <img src="${post.featuredImage || 'https://via.placeholder.com/800x450?text=No+Image'}" alt="${post.title}" class="w-full h-full object-cover">
                         </div>
                         <p class="text-xs text-gray-500 font-medium mb-2 uppercase tracking-wide skeleton-text">${new Date(post.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' })}</p>
-                        <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-brand-blue transition-colors skeleton-text">${post.title}</h3>
+                        <h3 class="font-serif text-xl font-semibold mb-2 group-hover:text-brand-primary transition-colors skeleton-text">${post.title}</h3>
                         <p class="text-sm text-gray-600 line-clamp-3 skeleton-text">${post.seoDescription || ''}</p>
                     </article>`;
                 }).join('');
 
-                // We must wait for GSAP to load before initializing animations
                 if (window.gsap && window.ScrollTrigger) {
                     initAnimations();
                 } else {
