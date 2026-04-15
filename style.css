@@ -50,7 +50,7 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --color-brand-primary: #14b8a6;
+    --color-brand-primary: #ff0000;
   }
 }
 @layer base {
