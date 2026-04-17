@@ -2,5 +2,18 @@
   "version": "https://jsonfeed.org/version/1.1",
   "title": "My Tech Blog",
   "home_page_url": "https://asknagency.github.io/mycatech",
-  "items": []
+  "items": [
+    {
+      "id": "https://asknagency.github.io/mycatech/posts/time-to-kill-the-1-remote-all-remote-rule-.html",
+      "url": "https://asknagency.github.io/mycatech/posts/time-to-kill-the-1-remote-all-remote-rule-.html",
+      "title": "Time to kill the '1 remote—all remote' rule!",
+      "summary": "Discover why the traditional hybrid meeting rule is failing and how to create a more equitable experience for both in-office and remote workers.",
+      "date_published": "2026-03-13T03:30:00.000Z",
+      "tags": [
+        "remote work",
+        "hybrid office",
+        "team collaboration"
+      ]
+    }
+  ]
 }
