@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI-Powered Robot Defeats Elite Table Tennis Champions | My Tech Blog</title>
   <meta name="description" content="Discover how a new AI-powered robotic arm is revolutionizing real-time agility by defeating top-ranked human players at table tennis using predictive tech.">
-  
+  <meta property="og:title"       content="AI-Powered Robot Defeats Elite Table Tennis Champions | My Tech Blog">
+  <meta property="og:description" content="Discover how a new AI-powered robotic arm is revolutionizing real-time agility by defeating top-ranked human players at table tennis using predictive tech.">
+  <meta property="og:type"        content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <link rel="preload" href="../style.css" as="style">
   <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap">
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,24 +34,321 @@
   "description": "Discover how a new AI-powered robotic arm is revolutionizing real-time agility by defeating top-ranked human players at table tennis using predictive tech."
 }
 </script>
-  <script>window._CMS_DATA = {"site":{"name":"My Tech Blog"},"post":{"id":"post-64a90e68-f4e5-41f7-90ce-c853c010a914","title":"AI-Powered Robot Defeats Elite Table Tennis Champions","featured":true,"date":"2026-04-27 11:20:00","categories":["Technology","Sports"],"topics":["AI","Robotics"],"featuredImage":"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80","authors":["author-008e3a04-7a0d-452a-b9bf-1f7a280ea2ed"],"targets":["target-77c5d894-2fce-4b0b-bf8d-d398bc72abf9"],"seoTitle":"AI Robotic Arm Defeats Human Champions in Table Tennis","seoDescription":"Discover how a new AI-powered robotic arm is revolutionizing real-time agility by defeating top-ranked human players at table tennis using predictive tech.","seoKeywords":"AI, robotics, table tennis, artificial intelligence, machine learning, robotic arm","status":"draft","editCount":0,"editHistory":[],"lastModifiedBy":"","slug":"ai-powered-robot-defeats-elite-table-tennis-champions","updated_at":"2026-04-29T12:10:59.502Z"}};</script>
-</head>
-<body class="bg-white text-gray-900 antialiased selection:bg-brand-blue selection:text-white flex flex-col min-h-screen">
+  <script>window._CMS_DATA = {"site":{"name":"My Tech Blog"},"post":{"id":"post-64a90e68-f4e5-41f7-90ce-c853c010a914","title":"AI-Powered Robot Defeats Elite Table Tennis Champions","featured":true,"date":"2026-04-27 11:20:00","categories":["Technology","Sports"],"topics":["AI","Robotics"],"featuredImage":"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80","authors":["author-008e3a04-7a0d-452a-b9bf-1f7a280ea2ed"],"targets":["target-77c5d894-2fce-4b0b-bf8d-d398bc72abf9"],"seoTitle":"AI Robotic Arm Defeats Human Champions in Table Tennis","seoDescription":"Discover how a new AI-powered robotic arm is revolutionizing real-time agility by defeating top-ranked human players at table tennis using predictive tech.","seoKeywords":"AI, robotics, table tennis, artificial intelligence, machine learning, robotic arm","status":"published","editCount":0,"editHistory":[],"lastModifiedBy":"","slug":"ai-powered-robot-defeats-elite-table-tennis-champions","updated_at":"2026-04-29T12:12:12.762Z"},"taxonomy":{"categories":[{"id":"category-e6a0b171-0f81-476e-bcdc-21efe64e98ae","title":"News","slug":"news","icon":"<svg viewBox=\"0 0 40 40\" width=\"40\" height=\"40\" fill=\"currentColor\"><rect width=\"40\" height=\"40\" rx=\"8\"/></svg>","created_at":"2026-04-25T02:49:58.575Z","modified_at":"2026-04-25T02:49:58.575Z"}],"topics":[{"id":"topic-1c087624-9ef7-4214-b698-bb844a8e2591","title":"War","slug":"war","icon":"<svg viewBox=\"0 0 40 40\" width=\"40\" height=\"40\" fill=\"currentColor\"><circle cx=\"20\" cy=\"20\" r=\"16\"/></svg>","created_at":"2026-04-25T02:49:48.870Z","modified_at":"2026-04-25T02:49:48.870Z"}]}};</script>
 
-  <header class="gsap-header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <a href="/" class="font-serif text-2xl font-bold tracking-tight text-gray-900">
-          My Tech Blog
+  <style>
+    /* ─── Base ───────────────────────────────────────────── */
+    body        { font-family: 'Outfit', system-ui, sans-serif; background-color: #ffffff; }
+    .font-serif, h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* ─── Reading progress bar ───────────────────────────── */
+    #reading-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #201c87 0%, #4f46e5 60%, #818cf8 100%);
+      z-index: 200;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ─── Drop cap on first paragraph ───────────────────── */
+    #post-container > p:first-of-type::first-letter {
+      float: left;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 5em;
+      font-weight: 700;
+      line-height: 0.78;
+      margin: 0.06em 0.12em 0 0;
+      color: #201c87;
+      shape-outside: margin-box;
+    }
+
+    /* ─── Article typography (prose overrides) ───────────── */
+    #post-container {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: #1f2937;
+    }
+    #post-container h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.875rem;
+      font-weight: 600;
+      color: #111827;
+      margin: 3rem 0 1.25rem;
+      line-height: 1.25;
+    }
+    #post-container h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: #111827;
+      margin: 2.25rem 0 0.875rem;
+      line-height: 1.3;
+    }
+    #post-container p         { margin-bottom: 1.65rem; }
+    #post-container a         { color: #201c87; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    #post-container a:hover   { opacity: 0.75; }
+    #post-container strong    { font-weight: 700; color: #111827; }
+    #post-container em        { font-style: italic; }
+
+    /* Blockquote — distinctive pull-quote style */
+    #post-container blockquote {
+      margin: 2.5rem 0;
+      padding: 1.75rem 2rem 1.75rem 2rem;
+      background: linear-gradient(135deg, #f0f0fd 0%, #f8f7ff 100%);
+      border-left: 4px solid #201c87;
+      border-radius: 0 0.75rem 0.75rem 0;
+      position: relative;
+    }
+    #post-container blockquote::before {
+      content: '\201C';
+      position: absolute;
+      top: -0.5rem; left: 1.25rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: #201c87;
+      opacity: 0.18;
+      line-height: 1;
+      pointer-events: none;
+    }
+    #post-container blockquote p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #374151;
+      margin-bottom: 0;
+      line-height: 1.65;
+    }
+    #post-container blockquote cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-style: normal;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #201c87;
+      opacity: 0.75;
+    }
+
+    /* Code */
+    #post-container code {
+      font-family: 'Fira Code', 'Courier New', monospace;
+      background: #f1f1fd;
+      color: #201c87;
+      padding: 0.15em 0.45em;
+      border-radius: 0.3rem;
+      font-size: 0.88em;
+    }
+    #post-container pre {
+      background: #0e0d1f;
+      border-radius: 0.875rem;
+      padding: 1.75rem;
+      overflow-x: auto;
+      margin: 2rem 0;
+      box-shadow: 0 4px 24px rgba(32,28,135,0.12);
+    }
+    #post-container pre code {
+      background: none;
+      color: #a5b4fc;
+      padding: 0;
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+
+    /* Lists */
+    #post-container ul { list-style: none; padding-left: 0; margin-bottom: 1.65rem; }
+    #post-container ul li { padding-left: 1.75rem; margin-bottom: 0.6rem; position: relative; }
+    #post-container ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0.65em;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #201c87;
+    }
+    #post-container ol { list-style: decimal; padding-left: 1.5rem; margin-bottom: 1.65rem; }
+    #post-container ol li { margin-bottom: 0.6rem; padding-left: 0.25rem; }
+
+    /* Images */
+    #post-container img {
+      border-radius: 0.875rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      margin: 2.5rem auto;
+      display: block;
+    }
+    #post-container figure { margin: 2.5rem 0; }
+    #post-container figcaption {
+      text-align: center; font-size: 0.8rem;
+      color: #9ca3af; margin-top: 0.75rem; font-style: italic;
+    }
+
+    /* Horizontal rule */
+    #post-container hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
+      margin: 3rem 0;
+    }
+
+    /* ─── Tag pills ──────────────────────────────────────── */
+    .tag-pill {
+      display: inline-flex; align-items: center;
+      background: #f1f0fd; color: #201c87;
+      padding: 0.3rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .tag-pill:hover {
+      background: #201c87; color: #fff;
+      border-color: #201c87;
+    }
+
+    /* ─── Share buttons ──────────────────────────────────── */
+    .share-btn {
+      width: 2.5rem; height: 2.5rem;
+      border-radius: 0.625rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #f3f4f6; color: #4b5563;
+      transition: all 0.2s ease;
+      border: 1px solid #e5e7eb;
+    }
+    .share-btn:hover { background: #201c87; color: #fff; border-color: #201c87; }
+
+    /* ─── Author card ────────────────────────────────────── */
+    .author-card {
+      background: linear-gradient(135deg, #fafaf8 0%, #f4f3ff 100%);
+      border: 1px solid #ede9fe;
+      border-radius: 1rem;
+    }
+
+    /* ─── Related posts image ────────────────────────────── */
+    .related-img-wrap { overflow: hidden; border-radius: 0.75rem; }
+    .related-img-wrap img { transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+    .group:hover .related-img-wrap img { transform: scale(1.04); }
+
+    /* ─── ToC (desktop sidebar) ──────────────────────────── */
+    #toc-sidebar { display: none; }
+    @media (min-width: 1280px) {
+      #toc-sidebar { display: block; }
+      #toc-sidebar a { display: block; padding: 0.3rem 0 0.3rem 0.875rem; border-left: 2px solid #e5e7eb; font-size: 0.8rem; color: #6b7280; transition: all 0.2s; line-height: 1.4; }
+      #toc-sidebar a:hover, #toc-sidebar a.active { color: #201c87; border-left-color: #201c87; }
+    }
+
+    /* ─── Dark footer ────────────────────────────────────── */
+    .article-footer      { background: #09091f; }
+    .article-footer a    { color: #6b7280; transition: color 0.2s; }
+    .article-footer a:hover { color: #a5b4fc; }
+    .article-footer p    { color: #6b7280; }
+  </style>
+</head>
+<body class="text-gray-900 antialiased selection:bg-brand-blue selection:text-white flex flex-col min-h-screen">
+
+  <!-- ── Reading Progress ───────────────────────────────── -->
+  <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
+
+  <!-- ── Header ────────────────────────────────────────── -->
+  <header class="gsap-header sticky top-0 z-50 bg-white/96 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
+
+      <a href="/" class="font-serif text-xl font-bold tracking-tight text-gray-900 hover:opacity-80 transition-opacity shrink-0">
+        My Tech Blog
       </a>
-      <a href="/" class="text-sm font-medium text-gray-500 hover:text-brand-blue transition-colors flex items-center gap-2">
-        &larr; Back to all posts
+
+      <a href="/"
+         class="group flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-brand-blue transition-colors">
+        <svg class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        <span class="hidden sm:inline">Back to all stories</span>
+        <span class="sm:hidden">Back</span>
       </a>
     </div>
   </header>
 
-  <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
-    <article id="post-container" class="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-gray-900 prose-a:text-brand-blue hover:prose-a:text-opacity-80 prose-img:rounded-xl prose-img:shadow-sm">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="AI-Powered Robot Defeats Elite Table Tennis Champions" fetchpriority="high" class="w-full h-[400px] object-cover rounded-xl mb-8"><h1 class="text-4xl font-extrabold tracking-tight mb-2">AI-Powered Robot Defeats Elite Table Tennis Champions</h1><p class="text-gray-500 text-sm mb-8 font-medium">Published on 27/04/2026</p><p>Artificial Intelligence has conquered chess, Go, and video games. Now, it has stepped into the physical realm with terrifying precision. A newly developed AI-powered robotic arm has consistently defeated top-ranked human players in table tennis.</p>
+  <!-- ── Main ──────────────────────────────────────────── -->
+  <main class="flex-1 w-full">
+
+    <!-- Article header zone -->
+    <div class="gsap-article-hero bg-gradient-to-b from-[#f4f3ff] via-[#faf9ff] to-white border-b border-gray-100">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <!-- Breadcrumb -->
+        <nav class="text-sm font-medium text-gray-500 mb-6">
+          <a href="/" class="hover:text-brand-blue transition-colors">Home</a> <span class="mx-2">&rsaquo;</span> <span class="text-gray-900">AI-Powered Robot Defeats Elite Table Tennis Champions</span>
+        </nav>
+
+        <!-- Category + Read time badges -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-blue text-white text-xs font-bold uppercase tracking-widest rounded-full">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+            </svg>
+            Article
+          </span>
+          <span class="text-xs text-gray-400 font-medium">5 min read</span>
+        </div>
+
+        <!-- Title -->
+        <h1 class="font-serif text-4xl sm:text-5xl xl:text-6xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-5">
+          AI-Powered Robot Defeats Elite Table Tennis Champions
+        </h1>
+
+        <!-- Description -->
+        <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl">
+          Discover how a new AI-powered robotic arm is revolutionizing real-time agility by defeating top-ranked human players at table tennis using predictive tech.
+        </p>
+
+        <!-- Author row -->
+        <div class="flex items-center gap-4 pt-6 border-t border-gray-200">
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-brand-blue to-indigo-400 flex items-center justify-center shrink-0 shadow-sm">
+            <span class="text-white font-bold text-sm">A</span>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Author Name</p>
+            <p class="text-sm text-gray-400">
+              <time>{{page.date}}</time>
+              <span class="mx-1.5 opacity-40">·</span>
+              Last updated May 2025
+            </p>
+          </div>
+          <!-- Share pill on desktop -->
+          <div class="ml-auto hidden sm:flex items-center gap-2">
+            <span class="text-xs text-gray-400 font-medium mr-1">Share</span>
+            <a href="#" class="share-btn" aria-label="Share on X">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </a>
+            <a href="#" class="share-btn" aria-label="Share on LinkedIn">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+              </svg>
+            </a>
+            <button class="share-btn" aria-label="Copy link" id="copy-link-btn" onclick="copyPageUrl()">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article body + optional ToC -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="xl:grid xl:grid-cols-[1fr_260px] xl:gap-14">
+
+        <!-- Article content -->
+        <div class="min-w-0">
+          <article id="post-container" class="max-w-2xl xl:max-w-none">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="AI-Powered Robot Defeats Elite Table Tennis Champions" fetchpriority="high" class="w-full h-[400px] object-cover rounded-xl mb-8"><h1 class="text-4xl font-extrabold tracking-tight mb-2">AI-Powered Robot Defeats Elite Table Tennis Champions</h1><p class="text-gray-500 text-sm mb-8 font-medium">Published on 27/04/2026</p><p>Artificial Intelligence has conquered chess, Go, and video games. Now, it has stepped into the physical realm with terrifying precision. A newly developed AI-powered robotic arm has consistently defeated top-ranked human players in table tennis.</p>
 <h3>Unmatched Reflexes</h3>
 <p>Utilizing predictive trajectory algorithms operating at 500 frames per second, the robot anticipates the spin, speed, and placement of the ball milliseconds after it leaves the human opponent&#39;s paddle. This marks a turning point in real-time robotic agility.</p>
 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CvB-X_qO1G-/?utm_source=ig_embed" data-instgrm-version="14"></blockquote><script async src="//www.instagram.com/embed.js"></script>
@@ -58,20 +361,162 @@
 <div class="npm-media-block" data-npm-type="video" data-align="center">
   <iframe src="https://www.youtube.com/embed/2B3C4D5E6F7" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio:16/9; border-radius:0.375rem;"></iframe>
 </div>
-    </article>
+          </article>
+
+          <!-- Article footer: tags + share -->
+          <div class="mt-14 pt-10 border-t border-gray-100 max-w-2xl xl:max-w-none">
+
+            <!-- Tags -->
+            <div class="flex flex-wrap items-center gap-2 mb-8">
+              <span class="text-xs font-bold text-gray-400 uppercase tracking-widest mr-1">Tags</span>
+            </div>
+
+            <!-- Mobile share row -->
+            <div class="flex items-center gap-3 sm:hidden">
+              <span class="text-sm font-medium text-gray-500">Share:</span>
+              <a href="#" class="share-btn" aria-label="Share on X">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="#" class="share-btn" aria-label="Share on LinkedIn">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Author card -->
+            <div class="author-card p-6 sm:p-8 flex gap-5 items-start mt-10">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-blue to-indigo-400 flex items-center justify-center shrink-0 shadow-md">
+                <span class="text-white font-bold text-xl">A</span>
+              </div>
+              <div>
+                <p class="text-xs font-bold uppercase tracking-widest text-brand-blue mb-1.5">Written by</p>
+                <h4 class="font-serif text-xl font-bold text-gray-900 mb-2">Author Name</h4>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  A writer and thinker exploring the future of work, technology, and the human experience.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky Table of Contents (xl+) -->
+        <aside class="hidden xl:block">
+          <div class="sticky top-28">
+            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">On this page</p>
+            <nav id="toc-sidebar" class="space-y-0.5">
+              <!-- Populated by JS -->
+            </nav>
+            <!-- Newsletter mini CTA -->
+            <div class="mt-8 p-5 bg-gradient-to-br from-brand-blue to-indigo-600 rounded-xl text-white">
+              <p class="font-serif font-semibold text-base mb-1.5">Enjoy this article?</p>
+              <p class="text-xs text-indigo-200 mb-4">Get more stories like this in your inbox every week.</p>
+              <a href="#"
+                 class="block w-full text-center bg-white text-brand-blue text-xs font-bold py-2.5 rounded-lg hover:bg-opacity-90 transition-opacity">
+                Subscribe free →
+              </a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- Related stories -->
+    <section class="gsap-related border-t border-gray-100 bg-[#fafaf8] py-14 sm:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 mb-10">
+          Continue reading
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+          <a href="../posts/cannes-ai-film-festival-shakes-up-the-entertainment-industry.html" class="group block bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors"><h4 class="font-bold text-gray-900 group-hover:text-brand-blue transition-colors line-clamp-2">Cannes AI Film Festival Shakes Up the Entertainment Industry</h4><p class="text-xs text-gray-500 mt-2">27/04/2026</p></a><a href="../posts/ipl-2026-kkr-defeats-lsg-in-super-over-thriller.html" class="group block bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors"><h4 class="font-bold text-gray-900 group-hover:text-brand-blue transition-colors line-clamp-2">IPL 2026: KKR Defeats LSG in Super Over Thriller</h4><p class="text-xs text-gray-500 mt-2">27/04/2026</p></a><a href="../posts/asi-begins-drilling-into-konark-sun-temple-for-restoration.html" class="group block bg-gray-50 rounded-xl p-4 hover:bg-gray-100 transition-colors"><h4 class="font-bold text-gray-900 group-hover:text-brand-blue transition-colors line-clamp-2">ASI Begins Drilling into Konark Sun Temple for Restoration</h4><p class="text-xs text-gray-500 mt-2">27/04/2026</p></a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="border-t border-gray-200 mt-auto bg-white py-10">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-      &copy; <script>document.write(new Date().getFullYear())</script> My Tech Blog.
+  <!-- ── Dark Footer ────────────────────────────────────── -->
+  <footer class="article-footer mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm">
+          &copy; <script>document.write(new Date().getFullYear())</script> My Tech Blog. All rights reserved.
+        </p>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
 
+  <!-- ── Scripts ────────────────────────────────────────── -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      gsap.fromTo(".gsap-header", { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
-      gsap.fromTo("#post-container", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.2, ease: "power3.out" });
+    /* ── Reading progress ── */
+    const progressBar = document.getElementById('reading-progress');
+    const article = document.getElementById('post-container');
+    if (progressBar && article) {
+      window.addEventListener('scroll', () => {
+        const articleTop    = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const scrolled      = window.scrollY - articleTop;
+        const progress      = Math.min(Math.max(scrolled / (articleHeight - window.innerHeight), 0), 1);
+        progressBar.style.width = (progress * 100) + '%';
+      }, { passive: true });
+    }
+
+    /* ── Copy link ── */
+    function copyPageUrl() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const btn = document.getElementById('copy-link-btn');
+        if (btn) { btn.style.background = '#201c87'; btn.style.color = '#fff'; setTimeout(() => { btn.style.background = ''; btn.style.color = ''; }, 1800); }
+      });
+    }
+
+    /* ── ToC builder ── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const toc     = document.getElementById('toc-sidebar');
+      const content = document.getElementById('post-container');
+      if (toc && content) {
+        const headings = content.querySelectorAll('h2, h3');
+        if (headings.length > 2) {
+          headings.forEach((h, i) => {
+            if (!h.id) h.id = 'section-' + i;
+            const a = document.createElement('a');
+            a.href = '#' + h.id;
+            a.textContent = h.textContent;
+            a.style.paddingLeft = h.tagName === 'H3' ? '1.5rem' : '0.875rem';
+            toc.appendChild(a);
+          });
+          /* Intersection Observer for active state */
+          const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+              const link = toc.querySelector('a[href="#' + e.target.id + '"]');
+              if (link) link.classList.toggle('active', e.isIntersecting);
+            });
+          }, { rootMargin: '0px 0px -60% 0px', threshold: 0 });
+          headings.forEach(h => obs.observe(h));
+        } else {
+          toc.closest('aside').style.display = 'none';
+        }
+      }
+
+      /* ── GSAP ── */
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.fromTo('.gsap-header',       { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' });
+      gsap.fromTo('.gsap-article-hero', { y: 30,  opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, delay: 0.15, ease: 'power3.out' });
+      gsap.fromTo('#post-container',    { y: 20,  opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, delay: 0.35, ease: 'power3.out' });
+      gsap.fromTo('.gsap-related',
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.85, ease: 'power3.out',
+          scrollTrigger: { trigger: '.gsap-related', start: 'top 88%' } }
+      );
     });
   </script>
 </body>
